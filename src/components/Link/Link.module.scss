@@ -4,9 +4,20 @@
   text-decoration: underline;
   color: inherit;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: all 0.2s;
 
   &:hover {
     color: $color;
+  }
+
+  &Extend {
+    padding: 1rem;
+    border: 1px solid $mainDarkColor;
+    border-radius: 1rem;
+    text-decoration: none;
+
+    &:hover {
+      border-color: $color;
+    }
   }
 }
