@@ -8,7 +8,9 @@ import s from './Main.module.scss';
 const Main = () => {
   return (
     <div className={s.wrapper}>
-      <Link to={ROUTES_LIST.login}>Please LogIn</Link>
+      <Link to={ROUTES_LIST.login} extend>
+        Please Login
+      </Link>
     </div>
   );
 };
