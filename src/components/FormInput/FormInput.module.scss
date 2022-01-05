@@ -1,0 +1,60 @@
+@mixin validInput {
+  outline: 0;
+  border-bottom-color: #665856;
+
+  & + .labelText {
+    font-size: 0.8rem;
+    color: #665856;
+    transform: translateY(-20px);
+  }
+}
+
+@mixin notValidInput {
+  @include validInput();
+  border-bottom-color: red;
+}
+
+.label {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.labelText {
+  position: absolute;
+  bottom: 8px;
+  color: #8597a3;
+  transition: all 0.2s;
+  pointer-events: none;
+}
+
+.input {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  border-bottom: 2px solid #eeeeee;
+  font: inherit;
+  line-height: 2;
+
+  &:focus,
+  &:valid {
+    @include validInput();
+  }
+
+  &Validate {
+    &:valid {
+      @include validInput();
+    }
+
+    &:not(:valid) {
+      @include notValidInput();
+    }
+  }
+}
+
+.error {
+  position: absolute;
+  color: red;
+  font-size: 0.8rem;
+  transform: translateY(15px);
+}

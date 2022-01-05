@@ -1,0 +1,53 @@
+@import '../../styles/var';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header,
+.main,
+.footer {
+  padding: 0 $padding;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+  background-color: $mainDarkColor;
+}
+
+.githubLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.linkText {
+  margin-left: 1em;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 3em 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+  margin: auto $padding 0;
+  border-top: 1px solid $mainDarkColor;
+}
