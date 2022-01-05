@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { ROUTES } from '../../lib/routes';
+import { ROUTES_LIST } from '../../lib/routes';
 
 export interface LinkProps {
-  to: ROUTES;
+  to: ROUTES_LIST;
   children: ReactNode;
 }
