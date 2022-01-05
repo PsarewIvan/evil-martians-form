@@ -1,4 +1,4 @@
-import React, { useState, createContext, ReactNode } from 'react';
+import React, { useState, createContext, ReactNode, useContext } from 'react';
 
 interface ILoginContext {
   isLogin: boolean;
@@ -13,6 +13,8 @@ const defaultState = {
 };
 
 export const LoginContext = createContext<ILoginContext>(defaultState);
+
+export const useLoginContext = () => useContext(LoginContext);
 
 const LoginProvider = (props: LoginProviderProps): JSX.Element => {
   const { children } = props;
