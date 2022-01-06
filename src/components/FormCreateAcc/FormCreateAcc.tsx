@@ -2,23 +2,39 @@ import React, { useState } from 'react';
 
 import useFormField from '../../hooks/useFormField';
 import FormInput from '../FormInput/FormInput';
-
 import Form from '../Form/Form';
 import { checkPass } from '../../lib/checkPass';
+import { register } from '../../lib/userAuth';
 
 const FormCreateAcc = (): JSX.Element => {
   const [passError, setPassError] = useState('');
-  const nameField = useFormField();
+  const [isFormDisabled, setFormDisabled] = useState(false);
   const emailField = useFormField();
   const passField = useFormField();
   const rePassField = useFormField();
 
+  const clearForm = () => {
+    emailField.onChange('');
+    passField.onChange('');
+    rePassField.onChange('');
+  };
+
   const onFormSubmit = () => {
     const isValid = checkPass(passField.value, rePassField.value);
-    if (!isValid) {
+    if (isValid) {
+      setFormDisabled(true);
+      register(emailField.value, passField.value).then((res) => {
+        if (!res.isOk) {
+          setPassError(res.message);
+        } else {
+          setPassError('');
+          clearForm();
+        }
+        setFormDisabled(false);
+      });
+    } else {
       setPassError(`Passwords don't match`);
     }
-    console.log('[FormCreateAcc - onSubmit]', isValid);
   };
 
   const onRePassChange = (value: string) => {
@@ -29,14 +45,7 @@ const FormCreateAcc = (): JSX.Element => {
   };
 
   return (
-    <Form buttonText="Create" onSubmit={onFormSubmit}>
-      <FormInput
-        label="Name"
-        name="name"
-        required
-        value={nameField.value}
-        onChange={nameField.onChange}
-      />
+    <Form buttonText="Create" onSubmit={onFormSubmit} disabled={isFormDisabled}>
       <FormInput
         label="Email"
         type="email"
