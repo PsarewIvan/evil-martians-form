@@ -4,4 +4,5 @@ export interface FormProps {
   buttonText: string;
   children: ReactNode;
   onSubmit: () => void;
+  disabled?: boolean;
 }
