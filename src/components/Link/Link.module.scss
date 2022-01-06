@@ -7,7 +7,7 @@
   transition: all 0.2s;
 
   &:hover {
-    color: $color;
+    color: $accent;
   }
 
   &Extend {
@@ -17,7 +17,7 @@
     text-decoration: none;
 
     &:hover {
-      border-color: $color;
+      border-color: $accent;
     }
   }
 }
