@@ -1,0 +1,17 @@
+@import '../../styles/var';
+
+.button {
+  position: relative;
+  margin: 0;
+  padding: 1rem;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $accent;
+  }
+}
