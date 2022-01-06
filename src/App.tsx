@@ -1,14 +1,9 @@
 import React from 'react';
 
-import LoginProvider from './lib/LoginProvider';
 import RoutesApp from './components/RoutesApp/RoutesApp';
 
 function App(): JSX.Element {
-  return (
-    <LoginProvider>
-      <RoutesApp />
-    </LoginProvider>
-  );
+  return <RoutesApp />;
 }
 
 export default App;

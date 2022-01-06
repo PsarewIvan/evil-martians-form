@@ -4,23 +4,35 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import Main from '../../pages/Main/Main';
 import NotFound from '../../pages/NotFound/NotFound';
-import Users from '../../pages/Users/Users';
-import { useLoginContext } from '../../hooks/useLoginContext';
 import { routes } from '../../lib/routes';
+import Hello from '../../pages/Hello/Hello';
+import RequireAuth from '../RequireAuth/RequireAuth';
+import Loader from '../Loader/Loader';
+import { useLoginState } from '../../hooks/useLoginState';
 
 const RoutesApp = (): JSX.Element => {
-  const { isLogin } = useLoginContext();
+  const [user, isLoading] = useLoginState();
+
+  const indexRoute = user ? (
+    <Route index element={<Hello />} />
+  ) : (
+    <Route index element={<Main />} />
+  );
 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        {isLogin ? (
-          <Route index element={<Users />} />
-        ) : (
-          <Route index element={<Main />} />
-        )}
+        {isLoading ? <Route index element={<Loader />} /> : indexRoute}
         {routes.map(({ path, Component }) => (
-          <Route path={path} element={<Component />} key={path} />
+          <Route
+            path={path}
+            element={
+              <RequireAuth>
+                <Component />
+              </RequireAuth>
+            }
+            key={path}
+          />
         ))}
         <Route path="*" element={<NotFound />} />
       </Route>

@@ -2,17 +2,11 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import GithubIcon from '../../icons/GithubIcon/GithubIcon';
-import { useLoginContext } from '../../lib/LoginProvider';
-import { ROUTES_LIST } from '../../lib/routes';
-import Link from '../Link/Link';
+import LoginLink from '../UserLink/UserLink';
 
 import s from './Layout.module.scss';
 
 const Layout = (): JSX.Element => {
-  const { isLogin } = useLoginContext();
-
-  const loginLinkText = isLogin ? '[LoginName]' : 'Login';
-
   return (
     <div className={s.wrapper}>
       <header className={s.header}>
@@ -25,9 +19,7 @@ const Layout = (): JSX.Element => {
           <GithubIcon />
           <span className={s.linkText}>This Repo</span>
         </a>
-        <Link to={ROUTES_LIST.login} extend>
-          {loginLinkText}
-        </Link>
+        <LoginLink />
       </header>
       <main className={s.main}>
         <Outlet />
