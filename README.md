@@ -1,8 +1,6 @@
 # Simple form with firebase auth
 
 <img src="readme-public/login.png" width="25%">
-<img src="readme-public/create-acc.png" width="25%">
-<img src="readme-public/user.png" width="25%">
 
 ---
 
