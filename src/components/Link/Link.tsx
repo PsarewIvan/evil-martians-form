@@ -10,7 +10,7 @@ const Link = (props: LinkProps): JSX.Element => {
   const { children, to, extend } = props;
 
   return (
-    <NavLink className={clsx(s.link, extend && s.linkExtend)} to={`/${to}`}>
+    <NavLink className={clsx(s.link, extend && s.linkExtend)} to={to}>
       {children}
     </NavLink>
   );
