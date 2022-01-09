@@ -37,12 +37,7 @@ const FormCreateAcc = (): JSX.Element => {
     }
   };
 
-  const onRePassChange = (value: string) => {
-    if (passError) {
-      setPassError('');
-    }
-    rePassField.onChange(value);
-  };
+  console.log('[form]');
 
   return (
     <Form buttonText="Create" onSubmit={onFormSubmit} disabled={isFormDisabled}>
@@ -68,7 +63,7 @@ const FormCreateAcc = (): JSX.Element => {
         name="rePass"
         required
         value={rePassField.value}
-        onChange={onRePassChange}
+        onChange={rePassField.onChange}
         errorText={passError}
       />
     </Form>

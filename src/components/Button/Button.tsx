@@ -3,8 +3,10 @@ import React from 'react';
 import { ButtonProps } from './types';
 import s from './Button.module.scss';
 
-const Button = (props: ButtonProps): JSX.Element => {
+const Button = React.memo((props: ButtonProps): JSX.Element => {
   const { children, onClick, submit, disabled = false } = props;
+
+  console.log('[button]');
 
   return (
     <button
@@ -16,6 +18,6 @@ const Button = (props: ButtonProps): JSX.Element => {
       {children}
     </button>
   );
-};
+});
 
 export default Button;

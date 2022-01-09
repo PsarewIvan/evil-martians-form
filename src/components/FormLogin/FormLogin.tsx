@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import useFormField from '../../hooks/useFormField';
 import FormInput from '../FormInput/FormInput';
@@ -30,13 +30,11 @@ const FormLogin = (): JSX.Element => {
     setFormDisabled(true);
   };
 
-  const onPassChange = (value: string) => {
-    if (error) {
-      setError('');
-    }
+  const onPassChange = useCallback((value: string) => {
     setFormDisabled(false);
     passField.onChange(value);
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Form buttonText="Login" onSubmit={onFormSubmit} disabled={isFormDisabled}>

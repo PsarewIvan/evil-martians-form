@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import s from './FormInput.module.scss';
 import { FormInputProps } from './types';
 
-const FormInput = (props: FormInputProps): JSX.Element => {
+const FormInput = React.memo((props: FormInputProps): JSX.Element => {
   const {
     value,
     onChange,
@@ -17,6 +17,7 @@ const FormInput = (props: FormInputProps): JSX.Element => {
   } = props;
   const [isBlur, setBlur] = useState(false);
   const [isChange, setChanged] = useState(false);
+  const [error, setError] = useState(errorText);
 
   const handleInputChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
@@ -24,6 +25,7 @@ const FormInput = (props: FormInputProps): JSX.Element => {
       setChanged(true);
     }
     onChange(value);
+    setError('');
   };
 
   const handleInputBlur = () => {
@@ -31,6 +33,8 @@ const FormInput = (props: FormInputProps): JSX.Element => {
       setBlur(true);
     }
   };
+
+  console.log('[input]', name);
 
   return (
     <label className={s.label}>
@@ -45,9 +49,9 @@ const FormInput = (props: FormInputProps): JSX.Element => {
         onBlur={handleInputBlur}
       />
       <span className={s.labelText}>{label}</span>
-      {errorText && <span className={s.error}>{errorText}</span>}
+      {error && <span className={s.error}>{error}</span>}
     </label>
   );
-};
+});
 
 export default FormInput;
