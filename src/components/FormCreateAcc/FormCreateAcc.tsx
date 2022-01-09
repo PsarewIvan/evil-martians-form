@@ -37,8 +37,6 @@ const FormCreateAcc = (): JSX.Element => {
     }
   };
 
-  console.log('[form]');
-
   return (
     <Form buttonText="Create" onSubmit={onFormSubmit} disabled={isFormDisabled}>
       <FormInput

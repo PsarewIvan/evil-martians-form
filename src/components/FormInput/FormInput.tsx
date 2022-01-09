@@ -34,8 +34,6 @@ const FormInput = React.memo((props: FormInputProps): JSX.Element => {
     }
   };
 
-  console.log('[input]', name);
-
   return (
     <label className={s.label}>
       <input

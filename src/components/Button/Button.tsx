@@ -6,8 +6,6 @@ import s from './Button.module.scss';
 const Button = React.memo((props: ButtonProps): JSX.Element => {
   const { children, onClick, submit, disabled = false } = props;
 
-  console.log('[button]');
-
   return (
     <button
       className={s.button}
