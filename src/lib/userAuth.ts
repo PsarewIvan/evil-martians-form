@@ -31,6 +31,10 @@ export const register = async (email: string, pass: string) => {
     switch (error.code) {
       case 'auth/weak-password':
         errorMessage = 'Password should be at least 6 characters';
+        break;
+      case 'auth/email-already-in-use':
+        errorMessage = 'This email already in use';
+        break;
     }
     return { isOk: false, message: errorMessage };
   }
