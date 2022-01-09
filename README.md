@@ -11,6 +11,7 @@
 - Для авторизации можно использовать тестовый аккаунт:
   - login: test@test.com
   - pass: 123456
+- demo page: [Vercel](https://evil-martians-form.vercel.app/)
 
 ## Зависимости
 
