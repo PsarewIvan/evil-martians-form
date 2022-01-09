@@ -34,6 +34,7 @@ const FormLogin = (): JSX.Element => {
     if (error) {
       setError('');
     }
+    setFormDisabled(false);
     passField.onChange(value);
   };
 
